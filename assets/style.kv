@@ -1,0 +1,63 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+
+        Label:
+            text: "Ativa Esperança"
+            font_size: 32
+            bold: True
+
+        TextInput:
+            id: email
+            hint_text: "E-mail"
+            multiline: False
+
+        TextInput:
+            id: password
+            hint_text: "Senha"
+            password: True
+            multiline: False
+
+        Button:
+            text: "Entrar"
+            on_release: root.login_user()
+
+        Button:
+            text: "Registrar"
+            on_release: app.root.current = 'register'
+
+<RegisterScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+
+        Label:
+            text: "Novo Cadastro"
+            font_size: 28
+
+        TextInput:
+            id: name
+            hint_text: "Nome completo"
+            multiline: False
+
+        TextInput:
+            id: email
+            hint_text: "E-mail"
+            multiline: False
+
+        TextInput:
+            id: password
+            hint_text: "Senha"
+            password: True
+            multiline: False
+
+        Button:
+            text: "Cadastrar"
+            on_release: root.register_user()
+
+        Button:
+            text: "Voltar"
+            on_release: app.root.current = 'login'
