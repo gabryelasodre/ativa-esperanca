@@ -1,3 +1,21 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+
+        Button:
+            text: "Login"
+            on_release: app.root.current = 'login'
+
+        Button:
+            text: "Listar alunos"
+            on_release: app.root.current = 'student_detail'
+
+        Button:
+            text: "Nova atividade"
+            on_release: app.root.current = "activity_register"
+
 <LoginScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -28,6 +46,13 @@
             text: "Registrar"
             on_release: app.root.current = 'register'
 
+        Button:
+            text: "Voltar para o Início"
+            on_release: app.root.current = 'home'
+
+
+
+
 <RegisterScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -39,7 +64,7 @@
             font_size: 28
 
         TextInput:
-            id: name
+            id: name'
             hint_text: "Nome completo"
             multiline: False
 
@@ -60,4 +85,117 @@
 
         Button:
             text: "Voltar"
-            on_release: app.root.current = 'login'
+            on_release: app.root.current = 'home'
+
+<StudentRegisterScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 15
+
+        Label:
+            text: "Cadastro de Aluno"
+            font_size: 28
+
+        TextInput:
+            id: student_name
+            hint_text: "Nome completo do aluno"
+            multiline: False
+
+        TextInput:
+            id: birth_date
+            hint_text: "Data de Nascimento (AAAA-MM-DD)"
+            multiline: False
+
+        Button:
+            text: "Salvar Aluno"
+            on_release: root.save_student()
+
+        Button:
+            text: "Voltar para o Início"
+            on_release: app.root.current = 'home'
+
+<StudentsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(12)
+        spacing: dp(10)
+
+        # Título
+        Label:
+            text: "Alunos Cadastrados"
+            font_size: "20sp"
+            size_hint_y: None
+            height: dp(40)
+            bold: True
+
+        # Lista de alunos
+        RecycleView:
+            id: rv_students
+            viewclass: "Button"
+            scroll_type: ["bars", "content"]
+            bar_width: dp(8)
+
+            RecycleBoxLayout:
+                default_size: None, dp(48)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: "vertical"
+                spacing: dp(6)
+
+        # Botão novo aluno
+        Button:
+            text: "Cadastrar novo aluno"
+            size_hint_y: None
+            height: dp(48)
+            on_release: app.root.current = "student_register"
+
+        Button:
+            text: "Voltar para o Início"
+            size_hint_y: None
+            height: dp(48)
+
+            on_release: app.root.current = 'home'
+
+<ActivityRegistrationScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(16)
+        spacing: dp(12)
+
+        Label:
+            text: "Cadastro de Atividade"
+            font_size: "20sp"
+            size_hint_y: None
+            height: dp(40)
+            bold: True
+
+        TextInput:
+            id: title
+            hint_text: "Título da atividade"
+            multiline: False
+
+        TextInput:
+            id: description
+            hint_text: "Descrição"
+            multiline: True
+            size_hint_y: None
+            height: dp(120)
+
+        TextInput:
+            id: date
+            hint_text: "Data (DD/MM/AAAA)"
+            multiline: False
+
+        Button:
+            text: "Salvar atividade"
+            size_hint_y: None
+            height: dp(48)
+            on_release: root.save_activity()
+
+        Button:
+            text: "Cancelar"
+            size_hint_y: None
+            height: dp(48)
+            on_release: app.root.current = "home"
