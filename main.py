@@ -5,6 +5,7 @@ from screens.activity_registration_screen import ActivityRegistrationScreen
 from screens.login_screen import LoginScreen
 from screens.register_screen import RegisterScreen
 from screens.home_screen import HomeScreen
+from screens.reports_screen import ReportsScreen
 from screens.student_register_screen import StudentRegisterScreen  # Importação da nova tela
 from kivy.lang import Builder
 
@@ -24,6 +25,7 @@ class MainApp(App):
         sm.add_widget(StudentsScreen(name='student_detail'))
         sm.add_widget(StudentRegisterScreen(name='student_register'))  # Adição da nova tela
         sm.add_widget(ActivityRegistrationScreen(name="activity_register"))
+        sm.add_widget(ReportsScreen(name="reports"))
 
         return sm
 

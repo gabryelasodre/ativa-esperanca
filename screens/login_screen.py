@@ -1,4 +1,6 @@
+from kivy.app import App
 from kivy.uix.screenmanager import Screen
+
 from models.user_model import User
 
 class LoginScreen(Screen):
@@ -8,6 +10,12 @@ class LoginScreen(Screen):
         user = User.authenticate(email, password)
         if user:
             self.manager.current = 'home'
+            app = App.get_running_app()
+
+            app.logged_user = {
+                "id": user[0],
+                "role": user[4]
+            }
         else:
             from kivy.uix.popup import Popup
             from kivy.uix.label import Label

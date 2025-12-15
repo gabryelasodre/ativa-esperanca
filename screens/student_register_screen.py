@@ -33,7 +33,7 @@ class StudentRegisterScreen(Screen):
             # Limpa os campos após o cadastro
             self.ids.student_name.text = ''
             self.ids.birth_date.text = ''
-            self.manager.current = 'student_detail'
+            self.manager.current = 'home'
         else:
             self.show_popup('Erro', 'Falha ao cadastrar aluno. Tente novamente.')
 

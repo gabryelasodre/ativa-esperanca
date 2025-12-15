@@ -1,3 +1,5 @@
+import sqlite3
+
 from database.db_manager import connect_db
 
 

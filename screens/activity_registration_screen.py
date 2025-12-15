@@ -7,12 +7,14 @@ class ActivityRegistrationScreen(Screen):
     def save_activity(self):
         title = self.ids.title.text
         description = self.ids.description.text
+        id_aluno = self.ids.id_aluno.text
         date = self.ids.date.text
 
         if not title or not date:
             return  # depois você pode mostrar popup
 
-        Activity.create(title, description, None, date)
+        id_atividade = Activity.create(title, description, None, date)
+        Activity.register_presence(id_atividade, id_aluno, 1)
 
         # limpa campos
         self.ids.title.text = ""

@@ -16,6 +16,10 @@
             text: "Nova atividade"
             on_release: app.root.current = "activity_register"
 
+        Button:
+            text: "Relatorios"
+            on_release: app.root.current = "reports"
+
 <LoginScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -64,7 +68,7 @@
             font_size: 28
 
         TextInput:
-            id: name'
+            id: name
             hint_text: "Nome completo"
             multiline: False
 
@@ -172,6 +176,11 @@
             bold: True
 
         TextInput:
+            id: id_aluno
+            hint_text: "Id do Aluno"
+            multiline: False
+
+        TextInput:
             id: title
             hint_text: "Título da atividade"
             multiline: False
@@ -196,6 +205,54 @@
 
         Button:
             text: "Cancelar"
+            size_hint_y: None
+            height: dp(48)
+            on_release: app.root.current = "home"
+
+
+<ReportsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: dp(16)
+        spacing: dp(12)
+
+        Label:
+            text: "Relatórios de Presença"
+            font_size: "20sp"
+            size_hint_y: None
+            height: dp(40)
+            bold: True
+
+        Label:
+            text: "Período"
+            size_hint_y: None
+            height: dp(24)
+
+        TextInput:
+            id: start_date
+            hint_text: "Data inicial (YYYY-MM-DD)"
+            multiline: False
+            size_hint_y: None
+            height: dp(40)
+
+        TextInput:
+            id: end_date
+            hint_text: "Data final (YYYY-MM-DD)"
+            multiline: False
+            size_hint_y: None
+            height: dp(40)
+
+        Button:
+            text: "Gerar relatório"
+            size_hint_y: None
+            height: dp(48)
+            on_release: root.imprimir_relatorio()
+
+        Widget:
+            # Espaço para empurrar os botões para cima
+
+        Button:
+            text: "Voltar"
             size_hint_y: None
             height: dp(48)
             on_release: app.root.current = "home"
